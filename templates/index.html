@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>Stock Market Price Prediction</title>
+    
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #D3D3D3;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #7B68EE;
+  color: white;
+}
+
+.topnav a.active {
+  background-color: #7B68EE;
+  color: white;
+}
+ .footer {
+ 
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #D3D3D3;
+   color: black;
+   text-align: center;
+}
+</style>
+
+    <script type="text/javascript">
+      function submitForm(action)
+    {
+        document.getElementById('predictForm').action = action;
+        document.getElementById('predictForm').submit();
+    }
+    </script>
+</head>
+<body>
+<h1 align="center" style="color:#7B68EE">Stock Market Price Prediction</h1>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#predict">Predict</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+  
+<section id="active">
+<br>
+<p>Stock market prices tend to change very fast.</p>
+<br>
+<p>So, if we can find the reasons on the basis of which the prices are changing, and if we can
+predict the approximate future price, we can generate higher profits.</p>
+<br>
+<p>Stock prices depend on a number of factors like market sentiment, company decisions,
+politics of the country, economic environment of the country, pumping and dumping and
+many more.</p>
+<br>
+<p>Also from the past changes over a period of time in the price of particular stock, we can get
+an idea of how the stock reacts to a particular condition.</p>
+</section>
+<br> <br><br>
+      
+
+<section>
+{% block content %}
+    		<!--	<form name="predictForm" method="POST" action="/predict" onsubmit="return validateForm()"> -->
+            <form name="predictForm" id="predictForm" method="POST">
+								<h2 align="center" style="color:#7B68EE">Predict</h2>
+								<h2>
+								{% if label %} {{ label }} {% endif %}
+								</h2>
+                                <style>
+                                    .button {
+                                        background-color:#7B68EE;
+                                        border: none;
+                                        color: white;
+                                        padding: 15px 32px;
+                                        text-align: center;
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        font-size: 16px;
+                                        margin: 14px 12px;
+                                        cursor: pointer;
+                                        border-radius: 12px}
+                                </style>
+								<br>
+                        <label font-size="20px" for="stock_name">Stock Name : </label>
+                        <select name='stock_name'>
+                        {% for stock in stock_list.keys() %}
+                        <option value={{ stock }}>{{ stock }} </option>
+                        {% endfor %}
+						</select><br>
+								
+                                <button class="button " type="submit" name = "get_stock_data" onclick="submitForm('/get_stock_data')">
+								Get Stock Data
+								</button>
+                                <button class="button" type="submit" name = "get_news_data" onclick="submitForm('/get_news_data')">
+								Get News Data
+								</button>
+                                <button class="button" type="submit" name = "train" onclick="submitForm('/train')">
+								Train
+								</button>
+                                <button class="button" name = "predict" type="submit" onclick="submitForm('/predict')">
+								Predict
+								</button>
+    		</form>
+			{% if img %}
+			<img src='/static/img/{{ img }}result.png' length=700 width=700/>
+			{% endif %}
+			{% endblock %}
+</section>
+<br><br><br>
+<section id="about">
+<h2 align="center" style="color:#7B68EE">About</h2>
+ <p > we are something we dont know </p>
+</section>
+
+</body>
+</html>
