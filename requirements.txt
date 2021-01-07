@@ -15,4 +15,4 @@ h5py==2.8.0
 nsepy
 beautifulsoup4==4.4.1
 bs4==0.0.1
-lxml==3.8.0
+lxml==4.6.2
