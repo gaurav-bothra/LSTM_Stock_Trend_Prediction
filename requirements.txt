@@ -1,6 +1,6 @@
 gunicorn
 Flask==0.12.2
-Flask-Cors==3.0.2
+Flask-Cors==3.0.9
 Keras==2.1.5
 matplotlib==2.0.2
 numpy==1.12.1
