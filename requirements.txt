@@ -3,7 +3,7 @@ Flask==0.12.2
 Flask-Cors==3.0.2
 Keras==2.1.5
 matplotlib==2.0.2
-numpy==1.12.1
+numpy==1.22.0
 pandas==0.20.1
 python-telegram-bot==11.1.0
 Quandl==3.4.5
